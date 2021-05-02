@@ -1,0 +1,12 @@
+
+<h2> Title: <%= @post.title %></h2>
+
+<h2> Body: <%= @post.body %></h2>
+
+<p>Edit post:<%= link_to "Edit", edit_post_path(@post)%> </p>
+
+<p>Delete post:<%= link_to "Delete", post_path(@post),
+ method: "delete",
+ data: { confirm: "Delete post" } %></p>
+
+<p> Back to: <%= link_to "index", posts_path %></p>

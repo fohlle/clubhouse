@@ -1,0 +1,39 @@
+
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+
+
+ <div class="container shadow p-3 mb-5 bg-body rounded w-25"> 
+  <% if member_signed_in? %>
+  <h2>Welcome User: <%= current_member.username%></h2>
+  <% else %>
+  <h2>Pls sign in</h2>
+  <% end %>
+</div>
+
+<div class="spacer"></div>
+
+<div class="row justify-content-center bg-info text-light border">
+  <div class="col-4 text-center">
+    <div class="index">
+      <% @posts.each do |p| %>
+        <div class="border mg shadow">
+        <% if member_signed_in? %>
+          <h3> Username: <%= Member.find(p.member_id).username %></h3>
+            <% else %>
+          <h3>Sign in to see Username </h3>
+        <% end %>
+          <p>Title: <%= p.title %></p>
+          <p>Text: <%= p.body %></p>
+          <p>Show post: <%= link_to "Post", p %> </p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-4">
+    <%= render "form", post: @post %><br>
+  </div>
+</div>
+
+
